@@ -1,0 +1,20 @@
+<div class="col-sm-12">
+    <nav>
+        Hello, Admin
+    </nav>
+    <div>
+      <div class="col-sm-4">
+        <button class="btn btn-primary" (click)="setCurrentPanel('config-panel');">Configure Settings</button>
+        <button class="btn btn-primary" (click)="setCurrentPanel('inventory-manage');">Manage Books</button>
+        <button class="btn btn-primary" (click)="setCurrentPanel('track-books');">Track Books</button>
+      </div>
+      <div class="col-sm-8" [ngSwitch]="currentPanel">
+          <app-admin-config-panel *ngSwitchCase="'config-panel'"></app-admin-config-panel>
+          <app-admin-inventory-management-panel *ngSwitchCase="'inventory-manage'"></app-admin-inventory-management-panel>
+          <app-admin-track-books-panel *ngSwitchCase="'track-books'"></app-admin-track-books-panel>
+          <app-admin-config-panel *ngSwitchDefault></app-admin-config-panel>
+      </div>
+    </div>
+</div>
+
+  

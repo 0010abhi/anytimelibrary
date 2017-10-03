@@ -4,12 +4,16 @@ import { RouterModule, Routes, NavigationEnd, ActivatedRoute, Router } from '@an
 //User-Defined Components 
 import { AppComponent } from './app.component';
 // import { BookDetailTileComponent } from './book-detail-tile/book-detail-tile.component'
-import { BookDetailUserComponent } from './book-detail-user/book-detail-user.component';
+// import { BookDetailUserComponent } from './book-detail-user/book-detail-user.component';
+import { LogInComponent } from './log-in/log-in.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { UserPanelComponent } from './user-panel/user-panel.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'book', pathMatch: 'full' },
-    { path: 'app',  component: AppComponent },
-    { path: 'book',  component: BookDetailUserComponent }
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: 'login',  component: LogInComponent },
+    { path: 'user',  component: UserPanelComponent },
+    { path: 'admin', component: AdminPanelComponent }
   ];
    
 @NgModule({
