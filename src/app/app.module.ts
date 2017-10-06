@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+// Import HttpClientModule from @angular/common/http
+import {HttpClientModule} from '@angular/common/http';
 // import { ngMaterial } from "../../node_modules/angular-material/angular-material.min"
 import { AppRoutingModule } from './app.routing.module'
 
@@ -30,6 +32,7 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

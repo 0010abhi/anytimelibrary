@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-user-profile',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private http: HttpClient) {}
+  
+  results:any;
+  ngOnInit(): void {
+     // Make the HTTP request:
+    this.http.get('../../assets/InMemoryDb/users.json').subscribe(data => {
+      // Read the result field from the JSON response.
+      console.log(data);
+      this.results = data['results'];
+    });
   }
 
 }
