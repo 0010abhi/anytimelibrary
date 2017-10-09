@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-inventory-management-panel',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-inventory-management-panel.component.scss']
 })
 export class AdminInventoryManagementPanelComponent implements OnInit {
-
+  @Input() bookData;
+  
   constructor() { }
 
+  books: any;
+  filterByGenre: any;
   ngOnInit() {
+    this.filterByGenre = "NA";
+    console.log(this.filterByGenre);
+    this.books = this.bookData;
+    console.log("Book Data", this.bookData);
   }
 
 }

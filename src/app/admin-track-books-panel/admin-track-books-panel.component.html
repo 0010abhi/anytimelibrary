@@ -1,3 +1,59 @@
-<p>
-  admin-track-books-panel works!
-</p>
+<div class="col-sm-12">
+    <!-- <div class="col-sm-8"></div>
+    <div class="col-sm-4 genreFilterOpt">
+        <label>Genre Filter</label>
+        <select class="form-control">
+          <option [value]="NA">None</option>
+          <option [value]="Fiction">Fiction</option>
+          <option [value]="Horror">Horror</option>
+          <option [value]="Technology">Technology</option>
+        </select>
+    </div>
+    <div class="clearfix"></div> -->
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+            <td>#</td>
+            <td>
+              Title
+              <!-- <span class="glyphicon glyphicon-chevron-down pull-right"></span> -->
+            </td>
+            <td>
+              Author
+              <!-- <span class="glyphicon glyphicon-chevron-down pull-right"></span> -->
+            </td>
+            <td>
+              Issued/Available
+              <!-- <span class="glyphicon glyphicon-chevron-down pull-right"></span> -->
+            </td>
+            <td>
+              Issued To
+              <!-- <span class="glyphicon glyphicon-chevron-down pull-right"></span> -->
+            </td>
+            <td>
+              From Date
+              <!-- <span class="glyphicon glyphicon-chevron-down pull-right"></span> -->
+            </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of booksIssued; let i=index;">
+            <td>{{i+1}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.issuedTo.length}}/{{book.totalPresent}}</td>
+            <td>
+              <span *ngIf="book.issuedTo.length>0">
+                <span *ngFor="let alloted of book.issuedTo">{{alloted.user}}<br></span>
+              </span>
+            </td>
+            <td>
+              <span *ngIf="book.issuedTo.length>0">
+                <span *ngFor="let alloted of book.issuedTo">{{alloted.fromDate}}<br></span>
+              </span>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

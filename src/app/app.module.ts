@@ -16,6 +16,7 @@ import { AdminConfigPanelComponent } from './admin-config-panel/admin-config-pan
 import { AdminInventoryManagementPanelComponent } from './admin-inventory-management-panel/admin-inventory-management-panel.component';
 import { AdminTrackBooksPanelComponent } from './admin-track-books-panel/admin-track-books-panel.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
+import { LibraryService } from '../assets/InMemoryDb/libraryService';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [LibraryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

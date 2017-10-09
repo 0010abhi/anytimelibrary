@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-admin-track-books-panel',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminTrackBooksPanelComponent implements OnInit {
 
+  @Input() bookData;
+  
   constructor() { }
 
+  booksIssued: any;
+
   ngOnInit() {
+    this.booksIssued = this.bookData;
+    console.log("Book Data HHHHH", this.bookData);
   }
 
 }

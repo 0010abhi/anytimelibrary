@@ -1,19 +1,31 @@
-<div class="col-sm-12">
-    <nav>
-        Hello, Admin
+<div class="col-sm-12 libPanel">
+    <nav class="navbar navDark">
+        <div class="col-sm-8">
+            <span class="adSpan">Hello, Admin</span>
+        </div>
+        <div class="col-sm-4 text-right">
+            <span class="logOutBtn" (click)="logOut();">
+                <span class="logSpan glyphicon glyphicon-log-out"></span>
+                <span class="logSpan">Log Out</span>
+            </span>
+        </div>
     </nav>
-    <div>
-      <div class="col-sm-4">
-        <button class="btn btn-primary" (click)="setCurrentPanel('config-panel');">Configure Settings</button>
-        <button class="btn btn-primary" (click)="setCurrentPanel('inventory-manage');">Manage Books</button>
-        <button class="btn btn-primary" (click)="setCurrentPanel('track-books');">Track Books</button>
-      </div>
-      <div class="col-sm-8" [ngSwitch]="currentPanel">
-          <app-admin-config-panel *ngSwitchCase="'config-panel'"></app-admin-config-panel>
-          <app-admin-inventory-management-panel *ngSwitchCase="'inventory-manage'"></app-admin-inventory-management-panel>
-          <app-admin-track-books-panel *ngSwitchCase="'track-books'"></app-admin-track-books-panel>
-          <app-admin-config-panel *ngSwitchDefault></app-admin-config-panel>
-      </div>
+    <div class="col-sm-12 btnPanel">
+        <div class="col-sm-4">
+            <button class="libBtn" (click)="setCurrentPanel('config-panel');">Configure Settings</button>
+        </div>
+        <div class="col-sm-4">
+            <button class="libBtn" (click)="setCurrentPanel('inventory-manage');">Manage Books</button>
+        </div>
+        <div class="col-sm-4">
+            <button class="libBtn" (click)="setCurrentPanel('track-books');">Track Books</button>
+        </div>
+    </div>
+    <div class="col-sm-12" [ngSwitch]="currentPanel">
+        <app-admin-config-panel *ngSwitchCase="'config-panel'"></app-admin-config-panel>
+        <app-admin-inventory-management-panel *ngSwitchCase="'inventory-manage'" [bookData]="booksData"></app-admin-inventory-management-panel>
+        <app-admin-track-books-panel *ngSwitchCase="'track-books'" [bookData]="booksData"></app-admin-track-books-panel>
+        <app-admin-config-panel *ngSwitchDefault></app-admin-config-panel>
     </div>
 </div>
 

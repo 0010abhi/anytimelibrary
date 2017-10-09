@@ -1,3 +1,18 @@
-<p>
-  admin-config-panel works!
-</p>
+<div class="col-sm-12">
+  <div class="col-sm-offset-3 col-sm-6">
+      <h3 class="text-center">ATL Configuration</h3>
+      <form class="form form-horizontal">
+        <div class="form-group">
+          <label>Book Limit (count per user)</label>
+          <input type="text" class="form-control" >
+        </div>      
+        <div class="form-group">
+            <label>Day Limit (per issue)</label>
+            <input type="text" class="form-control" >
+        </div>
+        <div class="text-center col-sm-offset-4 col-sm-4">
+          <button type="button" class="btn btn-info btnConf"  (click)="updateConfig();">Update</button>
+        </div>      
+      </form>
+  </div>
+</div>
