@@ -1,22 +1,27 @@
-<div class="jumbotron col-sm-4">
-  <div class="col-sm-8">
-      <label>Title</label><strong>{{bookData.title}}</strong><br>
-      <label>Author</label><strong>{{bookData.author}}</strong><br>
-      <label>ISBN</label><strong>{{bookData.isbn}}</strong><br>
-      <label>Genere</label><strong>{{bookData.genere}}</strong><br>
+<div class="col-sm-4 bookCard padding0">
+    <div class="bookCardData">
+            <div class="col-sm-8">
+                    <label>Title</label>:{{bookData.title}}<br>
+                    <label>Author</label>:{{bookData.author}}<br>
+                    <label>ISBN</label>:{{bookData.isbn}}<br>
+                    <label>Genere</label>:{{bookData.genre}}<br>
+                </div>
+                <div class="col-sm-4 thumbnail" style="height:150px;">
+                    <!-- <img src=".." alt="..."> -->
+                </div>
+                <div class="clearfix"></div>
+    </div>
+  <div class="col-sm-12 bookCardDataDesc">
+        <div class="col-sm-12 bookDesc padding0">
+                <label>Description</label>:<strong>{{bookData.desciption}}</strong><br>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-offset-3 col-sm-5">
+                <span class="pull-right"><label>Rating</label>:<strong>4 out of 5</strong><br></span>
+            </div>
+            <div class="col-sm-4 padding0">
+                <span class="pull-right"><label>Likes</label>:<strong>500</strong><br></span>
+            </div>
   </div>
-  <div class="col-sm-4 thumbnail" style="height:150px">
-      <img src=".." alt="...">
-  </div>
-  <div class="clearfix"></div>
-  <div class="col-sm-12">
-      <label>Description</label>:<strong>{{bookData.description}}</strong><br>
-  </div>
-  <div class="clearfix"></div>
-  <div class="col-sm-offset-4 col-sm-4">
-      <label>Rating</label>:<strong>{{bookData.rating}}</strong><br>
-  </div>
-  <div class="col-sm-4">
-      <label>Likes</label>:<strong>{{bookData.likes}}</strong><br>
-  </div>
+  
 </div>
