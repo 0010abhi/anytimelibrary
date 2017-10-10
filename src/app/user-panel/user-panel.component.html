@@ -12,13 +12,13 @@
   </nav>
   <div class="col-sm-12 btnPanel">
       <div class="col-sm-4">
-          <button class="libBtn" (click)="setCurrentPanel('user-profile');">Profile</button>
+          <button [ngClass]="{'libBtn':true, 'libBtnActive':currentPanel==='user-profile'}" (click)="setCurrentPanel('user-profile');">Profile</button>
       </div>
       <div class="col-sm-4">
-          <button class="libBtn" (click)="setCurrentPanel('book-detail');">Books In Library</button>
+          <button [ngClass]="{'libBtn':true, 'libBtnActive':currentPanel==='book-detail'}" (click)="setCurrentPanel('book-detail');">Books In Library</button>
       </div>
       <div class="col-sm-4">
-          <button class="libBtn" (click)="setCurrentPanel('book-logs');">Return Books</button>
+          <button [ngClass]="{'libBtn':true, 'libBtnActive':currentPanel==='book-logs'}" (click)="setCurrentPanel('book-logs');">Return Books</button>
       </div>
   </div>
   <div class="col-sm-12" [ngSwitch]="currentPanel">
