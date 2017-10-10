@@ -8,8 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BookDetailTileComponent implements OnInit {
   constructor() { }
-
+  @Input() issuedBooks;
   ngOnInit() {
   }
+
+  issueBook(book): void{
+    if(this.issuedBooks.length>=2||this.issuedBooks.indexOf(book)>-1){
+      return;
+    }
+    this.issuedBooks.push(book);
+  }
+
 
 }

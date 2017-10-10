@@ -17,6 +17,7 @@ import { AdminInventoryManagementPanelComponent } from './admin-inventory-manage
 import { AdminTrackBooksPanelComponent } from './admin-track-books-panel/admin-track-books-panel.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { LibraryService } from '../assets/InMemoryDb/libraryService';
+import { BookLogComponent } from './book-log/book-log.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LibraryService } from '../assets/InMemoryDb/libraryService';
     AdminPanelComponent,
     AdminInventoryManagementPanelComponent,
     AdminTrackBooksPanelComponent,
-    UserPanelComponent
+    UserPanelComponent,
+    BookLogComponent
   ],
   imports: [
     BrowserModule,

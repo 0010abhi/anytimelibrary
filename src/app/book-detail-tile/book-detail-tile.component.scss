@@ -5,12 +5,24 @@
     .bookCardData{
         padding-right: 10px;
         padding-top: 10px;
+        .cardIssueBtn{
+            margin-top: 5px;
+            width: 100%;
+            border-radius: 0px;
+        }
     }
     .bookCardDataDesc{
         background-color: #2f6a9e;
         color: white;
+        border: 1px solid white;
     }
 }
 .padding0{
     padding:0px;
+}
+.paddingTop10{
+    padding-top: 10px !important;
+}
+.marginBottom5{
+    margin-bottom: 5px !important;
 }

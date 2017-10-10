@@ -1,1 +1,4 @@
-<app-book-detail-tile *ngFor="let book of bookData" [bookData]="book"></app-book-detail-tile>
+<div class="col-sm-11 col-sm-offset-1">
+    <app-book-detail-tile *ngFor="let book of bookData" [bookData]="book" [issuedBooks]="['tech1']"></app-book-detail-tile>
+</div>
+

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LibraryService } from '../../assets/InMemoryDb/libraryService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-panel',
@@ -10,19 +11,27 @@ import { LibraryService } from '../../assets/InMemoryDb/libraryService';
 export class UserPanelComponent implements OnInit {
 
   constructor(
-    private libraryService: LibraryService
+    private libraryService: LibraryService,
+    private router: Router
   ) { }
 
   booksData: any;
+  currentPanel: any;
   getInitData(): void {
     this.libraryService.getBooks().subscribe((data) => {
       this.booksData = data;
-      console.log(this.booksData);
     });
   }
 
   ngOnInit() {
     this.getInitData();
+  }
+
+  setCurrentPanel(panelName: string): void{
+    this.currentPanel = panelName;
+  }
+  logOut():void{
+    this.router.navigate(['/login']);
   }
 
 }
