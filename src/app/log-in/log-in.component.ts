@@ -18,19 +18,50 @@ export class LogInComponent implements OnInit {
   ngOnInit() {
   }
 
-  logIn(user,pass): void{
-    console.log(user,pass); 
-    var logInResult = this.libraryService.logIn(user,pass);
-    console.log(logInResult);
-    if(logInResult==='AdminAccess'){
-      this.router.navigate(['/admin']);
-    } else if(logInResult === "UserAccess") {
-      this.router.navigate(['/user']);
-    } else {
-      alert(logInResult);
-    }
-  } 
-  logInUser(): void{
+  logIn(user, pass): void {
+    console.log(user, pass);
+    // Promise.all([
+    //   this.libraryService.logIn1(user, pass)
+    // ]).then(res => {
+    //   console.log(res);
+    //   // if (res === 'AdminAccess') {
+    //   //   this.router.navigate(['/admin']);
+    //   // } else if (res === "UserAccess") {
+    //   //   this.router.navigate(['/user']);
+    //   // } else {
+    //   //   alert(res);
+    //   // }
+    // }).catch(err => {
+    //   alert(err);
+    // })
+
+      this.libraryService.logIn1(user, pass).then(res => {
+      console.log(res);
+      if (res.access === 'AdminAccess') {
+        this.router.navigate(['/admin']);
+      } else if (res.access === "UserAccess") {
+        console.log(res.data);
+        this.router.navigate(['/user']);
+      } else {
+        alert(res);
+      }
+    }).catch(err => {
+      alert(err);
+    })
+
+    // this.libraryService.logIn1(user, pass).then(res => {
+    //   if (res === 'AdminAccess') {
+    //     this.router.navigate(['/admin']);
+    //   } else if (res === "UserAccess") {
+    //     this.router.navigate(['/user']);
+    //   } else {
+    //     alert(res);
+    //   }
+    // }).catch(err => {
+    //   alert(err);
+    // })
+  }
+  logInUser(): void {
     this.router.navigate(['/user']);
   }
 }

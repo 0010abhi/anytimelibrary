@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LibraryService } from '../../assets/InMemoryDb/libraryService';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-panel',
@@ -12,25 +12,41 @@ export class UserPanelComponent implements OnInit {
 
   constructor(
     private libraryService: LibraryService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
-
-  booksData: any;
+  issuedBook: any;
+  logs: any;
   currentPanel: any;
+  userPanelModel = {
+    "booksData": undefined,
+    "configuration": undefined,
+    "issueMetadata": undefined
+  }
+
   getInitData(): void {
     this.libraryService.getBooks().subscribe((data) => {
-      this.booksData = data;
+      this.userPanelModel.booksData = data;
     });
+    this.libraryService.getConfiguration().subscribe((data) => {
+      this.userPanelModel.configuration = data;
+    })
+    this.libraryService.getMetadataToIssue().subscribe((data) => {
+      this.userPanelModel.issueMetadata = data;
+    })
   }
 
   ngOnInit() {
     this.getInitData();
+    console.log(this.route);
+    this.issuedBook = [];
+    this.logs = [];
   }
 
-  setCurrentPanel(panelName: string): void{
+  setCurrentPanel(panelName: string): void {
     this.currentPanel = panelName;
   }
-  logOut():void{
+  logOut(): void {
     this.router.navigate(['/login']);
   }
 

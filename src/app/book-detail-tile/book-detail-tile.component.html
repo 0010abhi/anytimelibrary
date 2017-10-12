@@ -21,8 +21,8 @@
             </div>
             <div class="col-sm-6">{{bookData.genre}}</div>
             <div class="clearfix"></div>
-            <button type="button" [ngClass]="{'disabled': issuedBooks.length>=2 || issuedBooks.indexOf(bookData.id)>-1,  'btn':true,  'btn-info':true, 'cardIssueBtn': true}"
-                (click)="issueBook(bookData.id)">Issue Book</button>
+            <button type="button" [ngClass]="{'disabled': issuedBook.length>=booksPerUser || issuedBookIdArray.indexOf(bookData.id)>-1,  'btn':true,  'btn-info':true, 'cardIssueBtn': true}" data-toggle="modal" [attr.data-target]="targetModalId">Issue Book</button>
+            <!-- <button type="button" [ngClass]="{'disabled': issuedBook.length>=booksPerUser || issuedBookIdArray.indexOf(bookData.id)>-1,  'btn':true,  'btn-info':true, 'cardIssueBtn': true}" (click)="openModal(xyz)">Issue Book</button> -->
         </div>
         <div class="col-sm-4 thumbnail marginBottom5" style="height:150px;">
             <!-- <img src=".." alt="..."> -->
@@ -49,6 +49,29 @@
                 <strong>500</strong>
                 <br>
             </span>
+        </div>
+    </div>
+</div>
+
+<!-- issueBook Modal -->
+<div #xyz id="{{modalId}}" class="modal fade" role="dialog" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Issue Book</h4>
+            </div>
+            <div class="modal-body">
+                <p>Title:&nbsp;<strong>{{bookData.title}}</strong></p>
+                <p>Author:&nbsp;<strong>{{bookData.author}}</strong></p>
+                <p>Issuing Date:&nbsp;<strong>{{todaysDate | date}}</strong></p>
+                <hr>
+                <p>Get the book from <strong>Shelf</strong> {{bookLocation.shelf}} under <strong>Block</strong> {{bookLocation.block}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal" (click)="issueBook(bookData)">Issue</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>

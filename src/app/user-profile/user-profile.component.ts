@@ -20,9 +20,9 @@ export class UserProfileComponent implements OnInit {
   inventory: any;
 
   getInitData(): void {
-    this.libraryService.getUsers().subscribe((data) => {
-      this.users = data;
-    });
+    // this.libraryService.getUsers().subscribe((data) => {
+    //   this.users = data;
+    // });
     this.libraryService.getBooks().subscribe((data) => {
       this.books = data;
     });

@@ -23,8 +23,8 @@
   </div>
   <div class="col-sm-12" [ngSwitch]="currentPanel">
       <app-user-profile *ngSwitchCase="'user-profile'"></app-user-profile>
-      <app-book-detail-user *ngSwitchCase="'book-detail'" [bookData]="booksData"></app-book-detail-user>
-      <book-log *ngSwitchCase="'book-logs'"></book-log>
+      <app-book-detail-user *ngSwitchCase="'book-detail'" [bookData]="userPanelModel.booksData" [issuedBook]="issuedBook" [getBookPlace]="userPanelModel.issueMetadata"></app-book-detail-user>
+      <book-log *ngSwitchCase="'book-logs'" [bookData]="userPanelModel.booksData" [issuedBook]="issuedBook" [getBookPlace]="userPanelModel.issueMetadata" [logs]="logs"></book-log>
       <app-user-profile *ngSwitchDefault></app-user-profile>
   </div>
 </div>

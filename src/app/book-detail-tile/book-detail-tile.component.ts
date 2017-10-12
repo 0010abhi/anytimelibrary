@@ -1,22 +1,107 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { LibraryService } from '../../assets/InMemoryDb/libraryService';
+// import {ViewChild, ElementRef } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-book-detail-tile',
-  inputs: ['bookData'],
+  // inputs: ['bookData','issuedBook','getBookPlace'],
+  providers: [LibraryService],
   templateUrl: './book-detail-tile.component.html',
   styleUrls: ['./book-detail-tile.component.scss']
 })
 export class BookDetailTileComponent implements OnInit {
-  constructor() { }
-  @Input() issuedBooks;
+  constructor(
+    private libraryService: LibraryService
+  ) { }
+
+  @Input() bookData;
+  @Input() issuedBook;
+  @Input() getBookPlace;
+  @Input() ind;
+  // @ViewChild('xyz') xyz:ElementRef;
+
+  modalId: any;
+  targetModalId: any;
+  private bookGenre: string;
+  private bookTitleFirstLetter: string;
+  private perIssueDays: any;
+  booksPerUser: any;
+
+  bookLocation = {
+    "block": undefined,
+    "shelf": undefined
+  }
+  
+  todaysDate = new Date();
+  
+
+  getDueDate(currentDate, perIssueDays): any{
+    var date = new Date();
+    var res = date.setTime(date.getTime() + (perIssueDays * 24 * 60 * 60 * 1000));
+    return (new Date(res));
+  } 
+  issuedBookIdArray: any;
+  getBookIdsInArray(booksAlreadyIssued):void{
+    this.issuedBookIdArray = [];
+    if(booksAlreadyIssued.length>0){
+      for (var counter = 0; counter < booksAlreadyIssued.length; counter++) {
+        this.issuedBookIdArray.push(booksAlreadyIssued[counter].id);
+      }
+    }
+  }
+
+  getBookLocation(bookPlaceMetadata, genre, titleLetter): void{
+    var letters;
+    var indexGenre = bookPlaceMetadata.map((data)=>{
+      return data.genre;
+    }).indexOf(genre);
+    this.bookLocation.block = bookPlaceMetadata[indexGenre].block;
+    for (var counter = 0; counter < bookPlaceMetadata[indexGenre].titleStart.length; counter++) {
+      letters = bookPlaceMetadata[indexGenre].titleStart[counter].letters;
+      if(letters.match(titleLetter)){
+        this.bookLocation.shelf = bookPlaceMetadata[indexGenre].titleStart[counter].place;
+        break;
+      }
+    }
+  }
+
   ngOnInit() {
+    this.modalId = "issueBookModal" + (this.ind + 1);
+    this.targetModalId = "#" + this.modalId;
+    
+    this.bookGenre = this.bookData.genre;
+    this.bookTitleFirstLetter = this.bookData.title.substring(0,1);
+    this.getBookLocation(this.getBookPlace, this.bookGenre, this.bookTitleFirstLetter);
+    
+    this.getBookIdsInArray(this.issuedBook);
+    this.libraryService.getConfiguration().subscribe((data)=>{
+      this.perIssueDays = data.maxDaysPerIssue;
+      this.booksPerUser = data.maxBooksPerUser;
+    })
   }
 
   issueBook(book): void{
-    if(this.issuedBooks.length>=2||this.issuedBooks.indexOf(book)>-1){
+    //
+    if(this.issuedBook.length>= this.booksPerUser ||this.issuedBookIdArray.indexOf(book.id)>-1){
       return;
+    } else{
+      var issuedBookObj = {
+        "id": book.id,
+        "title": book.title,
+        "author": book.author,
+        "fromDate": this.todaysDate,
+        "dueDate": this.getDueDate(this.todaysDate,this.perIssueDays),
+        "toDate": undefined,
+        "block": this.bookLocation.block,
+        "shelf": this.bookLocation.shelf,
+        "rating":2
+      }
+      this.issuedBook.push(issuedBookObj);
+      this.issuedBookIdArray.push(book.id);
+      console.log("book issued", this.issuedBook);
     }
-    this.issuedBooks.push(book);
   }
 
 
