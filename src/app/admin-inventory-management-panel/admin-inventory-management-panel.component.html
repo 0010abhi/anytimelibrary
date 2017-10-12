@@ -43,13 +43,14 @@
     <tbody>
       <tr *ngFor="let book of books; let i=index;">
           <td>{{i+1}}</td>
-          <td>{{book.isbn}}</td>
+          <td *ngIf="!('textfieldMode' + i)">{{book.isbn}}</td>
+          <td *ngIf="('textfieldMode' + i)"><input type="text" [(ngModel)]="book.isbn"/></td>
           <td>{{book.title}}</td>
           <td>{{book.author}}</td>
           <td>{{book.genre}}</td>
           <td>{{book.totalPresent}}</td>
           <td>
-            <button type="button" class="btn btn-info">Update</button>
+            <button type="button" class="btn btn-info" (click)="toggleFieldText()">Update</button>
           </td>
       </tr>
     </tbody>

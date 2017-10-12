@@ -4,14 +4,14 @@
       <form class="form form-horizontal">
         <div class="form-group">
           <label>Book Limit (count per user)</label>
-          <input type="text" class="form-control" >
+          <input type="text" name="bpu" class="form-control" [(ngModel)]="configData.maxBooksPerUser" >
         </div>      
         <div class="form-group">
             <label>Day Limit (per issue)</label>
-            <input type="text" class="form-control" >
+            <input type="text" name="dpi" class="form-control" [(ngModel)]="configData.maxDaysPerIssue" >
         </div>
         <div class="text-center col-sm-offset-4 col-sm-4">
-          <button type="button" class="btn btn-info btnConf"  (click)="updateConfig();">Update</button>
+          <button type="button" class="btn btn-info btnConf" (click)="updateConfig(configData);">Update</button>
         </div>      
       </form>
   </div>

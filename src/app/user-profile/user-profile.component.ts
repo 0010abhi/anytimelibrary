@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LibraryService } from '../../assets/InMemoryDb/libraryService';
 
@@ -10,6 +10,7 @@ import { LibraryService } from '../../assets/InMemoryDb/libraryService';
 })
 export class UserProfileComponent implements OnInit {
 
+  @Input() userData;
   constructor(
     private http: HttpClient,
     private libraryService: LibraryService

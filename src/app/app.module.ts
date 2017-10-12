@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule }   from '@angular/forms';
 import { NgModule } from '@angular/core';
 // Import HttpClientModule from @angular/common/http
 import {HttpClientModule} from '@angular/common/http';
@@ -35,6 +36,7 @@ import { BookLogComponent } from './book-log/book-log.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule
   ],

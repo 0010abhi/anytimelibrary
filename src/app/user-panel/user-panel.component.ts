@@ -19,6 +19,7 @@ export class UserPanelComponent implements OnInit {
   logs: any;
   currentPanel: any;
   userPanelModel = {
+    "user": undefined,
     "booksData": undefined,
     "configuration": undefined,
     "issueMetadata": undefined
@@ -34,6 +35,10 @@ export class UserPanelComponent implements OnInit {
     this.libraryService.getMetadataToIssue().subscribe((data) => {
       this.userPanelModel.issueMetadata = data;
     })
+    this.route.params
+    .subscribe(params => {
+      this.userPanelModel.user = params;
+    });
   }
 
   ngOnInit() {

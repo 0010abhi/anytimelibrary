@@ -41,7 +41,7 @@ export class LogInComponent implements OnInit {
         this.router.navigate(['/admin']);
       } else if (res.access === "UserAccess") {
         console.log(res.data);
-        this.router.navigate(['/user']);
+        this.router.navigate(['/user', res.data]);
       } else {
         alert(res);
       }

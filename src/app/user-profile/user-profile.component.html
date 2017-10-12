@@ -1,4 +1,14 @@
 <div class="col-sm-12">
-    Profile Page Works.    
+    {{userData | json}}
+    <div class="col-sm-offset-3 col-sm-2">First Name</div>
+    <div class="col-sm-6">{{userData.firstName}}</div>    
+    <div class="col-sm-offset-3 col-sm-2">Last Name</div>
+    <div class="col-sm-6">{{userData.lastName}}</div>    
+    <div class="col-sm-offset-3 col-sm-2">username/userid</div>
+    <div class="col-sm-6">{{userData.username}}/{{userData.userId}}</div>    
+    <div class="col-sm-offset-3 col-sm-2">password</div>
+    <div class="col-sm-6">{{userData.password}}</div>    
+    <div class="col-sm-offset-3 col-sm-2">email</div>
+    <div class="col-sm-6">{{userData.email}}</div>    
 </div>
   
