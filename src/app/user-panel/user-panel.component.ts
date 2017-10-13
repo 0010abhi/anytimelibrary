@@ -15,6 +15,7 @@ export class UserPanelComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) { }
+  
   issuedBook: any;
   logs: any;
   currentPanel: any;
@@ -25,34 +26,42 @@ export class UserPanelComponent implements OnInit {
     "issueMetadata": undefined
   }
 
+  // "ratedBooks": [],
+  // "booksLiked": [],
+  // "issuedBooks": [],
+  // "logs": []
+
   getInitData(): void {
-    this.libraryService.getBooks().subscribe((data) => {
-      this.userPanelModel.booksData = data;
-    });
-    this.libraryService.getConfiguration().subscribe((data) => {
-      this.userPanelModel.configuration = data;
-    })
+    //BookLocation data is used @ time of issue. and then will be saved with issued book object.
     this.libraryService.getMetadataToIssue().subscribe((data) => {
       this.userPanelModel.issueMetadata = data;
     })
-    this.route.params
-    .subscribe(params => {
-      this.userPanelModel.user = params;
+    this.libraryService.getBooks().then((data) => {
+      this.userPanelModel.booksData = data;
     });
+    this.libraryService.getConfiguration().then((data) => {
+      this.userPanelModel.configuration = data;
+    })
+    this.libraryService.getInMemoryData("currentUser").then((data)=>{
+      this.userPanelModel.user = data;
+      this.issuedBook = this.userPanelModel.user.issuedBooks;
+      this.logs = this.userPanelModel.user.logs;
+    }).catch((err)=>{
+      alert(err);
+    })
   }
 
   ngOnInit() {
     this.getInitData();
-    console.log(this.route);
-    this.issuedBook = [];
-    this.logs = [];
+    this.currentPanel = 'user-profile';
   }
 
+  
   setCurrentPanel(panelName: string): void {
     this.currentPanel = panelName;
   }
+  
   logOut(): void {
     this.router.navigate(['/login']);
   }
-
 }

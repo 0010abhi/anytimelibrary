@@ -6,19 +6,19 @@
         <div class="col-sm-4 text-right">
             <span class="logOutBtn" (click)="logOut();">
                 <span class="logSpan glyphicon glyphicon-log-out"></span>
-                <span class="logSpan">Log Out</span>
+            <span class="logSpan">Log Out</span>
             </span>
         </div>
     </nav>
     <div class="col-sm-12 btnPanel">
         <div class="col-sm-4">
-            <button class="libBtn" (click)="setCurrentPanel('config-panel');">Configure Settings</button>
+            <button [ngClass]="{'libBtn':true, 'libBtnActive':currentPanel==='config-panel'}" (click)="setCurrentPanel('config-panel');">Configure Settings</button>
         </div>
         <div class="col-sm-4">
-            <button class="libBtn" (click)="setCurrentPanel('inventory-manage');">Manage Books</button>
+            <button [ngClass]="{'libBtn':true, 'libBtnActive':currentPanel==='inventory-manage'}" (click)="setCurrentPanel('inventory-manage');">Manage Books</button>
         </div>
         <div class="col-sm-4">
-            <button class="libBtn" (click)="setCurrentPanel('track-books');">Track Books</button>
+            <button [ngClass]="{'libBtn':true, 'libBtnActive':currentPanel==='track-books'}" (click)="setCurrentPanel('track-books');">Track Books</button>
         </div>
     </div>
     <div class="col-sm-12" [ngSwitch]="currentPanel">
@@ -28,5 +28,3 @@
         <app-admin-config-panel *ngSwitchDefault></app-admin-config-panel>
     </div>
 </div>
-
-  

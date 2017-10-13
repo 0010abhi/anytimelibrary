@@ -20,7 +20,6 @@ export class BookDetailTileComponent implements OnInit {
   @Input() issuedBook;
   @Input() getBookPlace;
   @Input() ind;
-  // @ViewChild('xyz') xyz:ElementRef;
 
   modalId: any;
   targetModalId: any;
@@ -76,14 +75,13 @@ export class BookDetailTileComponent implements OnInit {
     this.getBookLocation(this.getBookPlace, this.bookGenre, this.bookTitleFirstLetter);
     
     this.getBookIdsInArray(this.issuedBook);
-    this.libraryService.getConfiguration().subscribe((data)=>{
+    this.libraryService.getConfiguration().then((data)=>{
       this.perIssueDays = data.maxDaysPerIssue;
       this.booksPerUser = data.maxBooksPerUser;
     })
   }
 
   issueBook(book): void{
-    //
     if(this.issuedBook.length>= this.booksPerUser ||this.issuedBookIdArray.indexOf(book.id)>-1){
       return;
     } else{
@@ -96,11 +94,15 @@ export class BookDetailTileComponent implements OnInit {
         "toDate": undefined,
         "block": this.bookLocation.block,
         "shelf": this.bookLocation.shelf,
-        "rating":2
+        "rating": 0
       }
-      this.issuedBook.push(issuedBookObj);
-      this.issuedBookIdArray.push(book.id);
-      console.log("book issued", this.issuedBook);
+      this.libraryService.issueTheBook(book.id,issuedBookObj).then((res)=>{
+        this.issuedBook.push(issuedBookObj);
+        this.issuedBookIdArray.push(book.id);
+        console.log("book issued", this.issuedBook);
+      }).catch(err=>{
+        alert(err);
+      });
     }
   }
 

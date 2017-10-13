@@ -44,26 +44,28 @@ export class BookLogComponent implements OnInit {
   //   console.log("bookLocation", this.bookLocation);  
   // }
 
-  returnBook(book): void{
-    // this.bookGenre = this.bookData.genre;
-    // this.bookTitleFirstLetter = this.bookData.title.substring(0,1);
-    // this.libraryService.returnBook(book, )
+  returnBook(book,bookIndex): void{
     console.log("Before return", this.issuedBook);
+    this.issuedBook[bookIndex].toDate = this.todaysDate;
+    this.libraryService.returnTheBook(book.id,this.issuedBook[bookIndex]).then((res)=>{
+      var issuedBooksInd = this.issuedBook.map(data=>{
+        return data.id
+      }).indexOf(book.id);
+      console.log("index To Delete ", issuedBooksInd);
+      this.issuedBook.splice(issuedBooksInd,1);
+      
+      console.log("After return", this.issuedBook);
+      this.logs.push(book);
+      book.toDate = this.todaysDate;
+      console.log(this.logs);
+    }).catch((err)=>{
+      alert(err);
+    })
     
-    var issuedBooksInd = this.issuedBook.map(data=>{
-      return data.id
-    }).indexOf(book.id);
-    console.log("index To Delete ", issuedBooksInd);
-    this.issuedBook.splice(issuedBooksInd,1);
     
-    console.log("After return", this.issuedBook);
-    this.logs.push(book);
-    book.toDate = this.todaysDate;
-    console.log(this.logs);
   }
 
   ratingToBook(rating,bookIndex): void{
-    
     this.issuedBook[bookIndex].rating = rating;
   }
 

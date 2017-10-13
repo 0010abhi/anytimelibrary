@@ -8,16 +8,20 @@ import { NgModel } from '@angular/forms';
 })
 export class AdminInventoryManagementPanelComponent implements OnInit {
   @Input() bookData;
-  
+
   constructor() { }
 
   books: any;
   filterByGenre: any;
+  textFieldMode = [];
   ngOnInit() {
     this.filterByGenre = "NA";
-    console.log(this.filterByGenre);
     this.books = this.bookData;
     console.log("Book Data", this.bookData);
   }
+
+  // toggleFieldText(index): void {
+  //   console.log("hello", index);
+  // }
 
 }

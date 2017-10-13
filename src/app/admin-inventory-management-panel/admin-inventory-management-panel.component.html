@@ -10,13 +10,13 @@
       </select>
   </div>
   <div class="clearfix"></div>
-  <table class="table table-bordered">
+  <table class="table table-bordered inventoryTable" >
     <thead>
       <tr>
           <td>#</td>
           <td>
             ISBN
-            <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+            <!-- <span class="glyphicon glyphicon-chevron-down pull-right"></span> -->
           </td>
           <td>
             Title
@@ -35,23 +35,47 @@
             <span class="glyphicon glyphicon-chevron-down pull-right"></span>
           </td>
           <td>
-            Update Details
-            <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+            Action
           </td>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let book of books; let i=index;">
+      <tr *ngFor="let book of books; let i=index;" ng-init="textFieldMode[i]=false;">
           <td>{{i+1}}</td>
-          <td *ngIf="!('textfieldMode' + i)">{{book.isbn}}</td>
-          <td *ngIf="('textfieldMode' + i)"><input type="text" [(ngModel)]="book.isbn"/></td>
-          <td>{{book.title}}</td>
-          <td>{{book.author}}</td>
-          <td>{{book.genre}}</td>
-          <td>{{book.totalPresent}}</td>
-          <td>
-            <button type="button" class="btn btn-info" (click)="toggleFieldText()">Update</button>
+          
+          <td *ngIf="!textFieldMode[i]">
+            {{book.isbn}}
           </td>
+          <td *ngIf="textFieldMode[i]">
+            <input class="form-control" type="text" [(ngModel)]="book.isbn"/>
+          </td>
+
+          <td *ngIf="!textFieldMode[i]">{{book.title}}</td>
+          <td *ngIf="textFieldMode[i]">
+              <input class="form-control" type="text" [(ngModel)]="book.title"/>
+          </td>
+
+          <td *ngIf="!textFieldMode[i]">{{book.author}}</td>
+          <td *ngIf="textFieldMode[i]">
+              <input class="form-control" type="text" [(ngModel)]="book.author"/>
+          </td>
+
+          <td *ngIf="!textFieldMode[i]">{{book.genre}}</td>
+          <td *ngIf="textFieldMode[i]">
+              <input class="form-control" type="text" [(ngModel)]="book.genre"/>
+          </td>
+
+          <td *ngIf="!textFieldMode[i]">{{book.totalPresent}}</td>
+          <td *ngIf="textFieldMode[i]">
+              <input class="form-control" type="text" [(ngModel)]="book.totalPresent"/>
+          </td>
+
+          <td *ngIf="!textFieldMode[i]">
+            <button type="button" class="btn btn-info atlBtn" (click)="textFieldMode[i]=!textFieldMode[i];">Update</button>
+          </td>
+          <td *ngIf="textFieldMode[i]">
+              <button type="button" class="btn btn-info atlBtn" (click)="textFieldMode[i]=!textFieldMode[i];">Apply</button>
+            </td>
       </tr>
     </tbody>
   </table>

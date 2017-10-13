@@ -1,14 +1,23 @@
 <div class="col-sm-12">
-    {{userData | json}}
-    <div class="col-sm-offset-3 col-sm-2">First Name</div>
-    <div class="col-sm-6">{{userData.firstName}}</div>    
-    <div class="col-sm-offset-3 col-sm-2">Last Name</div>
-    <div class="col-sm-6">{{userData.lastName}}</div>    
-    <div class="col-sm-offset-3 col-sm-2">username/userid</div>
-    <div class="col-sm-6">{{userData.username}}/{{userData.userId}}</div>    
-    <div class="col-sm-offset-3 col-sm-2">password</div>
-    <div class="col-sm-6">{{userData.password}}</div>    
-    <div class="col-sm-offset-3 col-sm-2">email</div>
-    <div class="col-sm-6">{{userData.email}}</div>    
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>username/userid</td>
+            <!-- <td>password</td> -->
+            <td>email</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{userData?.firstName}}</td>
+            <td>{{userData?.lastName}}</td>
+            <td>{{userData?.username}}/{{userData?.userId}}</td>
+            <!-- <td>{{userData.password}}</td> -->
+            <td>{{userData?.email}}</td>
+          </tr>
+        </tbody>
+      </table>
 </div>
   

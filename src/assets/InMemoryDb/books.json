@@ -8,14 +8,7 @@
 		"genre": "Technology",
 		"totalPresent": 9,
 		"issued": 0,
-		"issuedTo": [
-			{ "user": "Abhishek.Sachdeva@mindtree.com",
-				"fromDate": "12 June"
-			},
-			{ "user": "Abhishek.Kumar@mindtree.com",
-				"fromDate": "15 June"
-			}
-		]
+		"issuedTo": []
 	},
 	{
 		"id": "tech2",

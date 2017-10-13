@@ -30,7 +30,7 @@
         <td>{{book.fromDate | date}}</td>
         <td>{{book.dueDate | date}}</td>
         <td>
-          <button type="button" class="btn btn-info" data-toggle="modal" [attr.data-target]="'#returnModal'+ i">Return</button>
+          <button type="button" class="btn btn-info atlBtn" data-toggle="modal" [attr.data-target]="'#returnModal'+ i">Return</button>
         </td>
       </tr>
     </tbody>
@@ -59,7 +59,7 @@
               (click)="ratingToBook(rate,i)"></span></p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-dismiss="modal" (click)="returnBook(book);">Return</button>
+          <button type="button" class="btn btn-info" data-dismiss="modal" (click)="returnBook(book,i);">Return</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>

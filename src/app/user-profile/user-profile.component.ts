@@ -19,17 +19,17 @@ export class UserProfileComponent implements OnInit {
   users: any;
   books: any;
   inventory: any;
-
+  localUser: any;
   getInitData(): void {
     // this.libraryService.getUsers().subscribe((data) => {
     //   this.users = data;
     // });
-    this.libraryService.getBooks().subscribe((data) => {
+    this.libraryService.getBooks().then((data) => {
       this.books = data;
     });
-    this.libraryService.getInventory().subscribe((data) => {
-      this.inventory = data;
-    });
+    // this.libraryService.getInventory().subscribe((data) => {
+    //   this.inventory = data;
+    // });
   }
   
   ngOnInit(): void {

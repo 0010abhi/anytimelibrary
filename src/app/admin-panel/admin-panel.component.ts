@@ -22,7 +22,7 @@ export class AdminPanelComponent implements OnInit {
   inventory: any;
   titleG = false;
   getInitData(): void {
-    this.libraryService.getBooks().subscribe((data) => {
+    this.libraryService.getBooks().then((data) => {
       this.booksData = data;
       console.log(this.booksData);
     });
@@ -32,12 +32,13 @@ export class AdminPanelComponent implements OnInit {
   }
   ngOnInit() {
     this.getInitData();
+    this.currentPanel = 'config-panel';
   }
 
-  setCurrentPanel(panelName: string): void{
+  setCurrentPanel(panelName: string): void {
     this.currentPanel = panelName;
   }
-  logOut():void{
+  logOut(): void {
     this.router.navigate(['/login']);
   }
 }

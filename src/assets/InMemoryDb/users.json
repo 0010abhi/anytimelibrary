@@ -1,84 +1,27 @@
 [
 	{
-		"username": "abhi",
-		"password": "12345678",
-		"email": "abhishek.sachdeva@mindtre.com",
-		"firstName": "abhishek",
-		"lastName": "sachdeva",
-		"userId": "101",
-		"ratedBooks": [
-			// {
-			// 	"BookId": "",
-			// 	"rating": "3.5"
-			// }
-		],
-		"booksLiked": [],
-		"IssuedBooks": [],
-		"logs": [
-			// {
-			// 	"bookTitle": "A",
-			// 	"bookGenere": "G1",
-			// 	"bookThumbnail": "XXX",
-			// 	"IssuedDate": "12 Dec, 2017",
-			// 	"ReturnDate": "14 Dec, 2017"
-			// }
-		]
-	},
-	{
 		"username": "avi",
 		"password": "12345678",
 		"email": "avi.sachdeva@gmail.com",
 		"firstName": "avinash",
 		"lastName": "sachdeva",
 		"userId": "102",
-		"ratedBooks": [
-			{
-				"BookId": "",
-				"rating": "3.5"
-			}
-		],
-		"booksLiked": [
-			"IdForBook"
-		],
-		"IssuedBooks": [
-			{
-				"bookTitle": "D",
-				"bookGenere": "G1",
-				"bookThumbnail": "XXX",
-				"IssuedDate": "18 Dec, 2017",
-				"ReturnDate": "NA"
-			},
-			{
-				"bookTitle": "B",
-				"bookGenere": "G1",
-				"bookThumbnail": "XXX",
-				"IssuedDate": "19 Dec, 2017",
-				"ReturnDate": "NA"
-			}
-		],
-		"logs": [
-			{
-				"bookTitle": "A",
-				"bookGenere": "G1",
-				"bookThumbnail": "XXX",
-				"IssuedDate": "12 Dec, 2017",
-				"ReturnDate": "14 Dec, 2017"
-			},
-			{
-				"bookTitle": "B",
-				"bookGenere": "G2",
-				"bookThumbnail": "YYY",
-				"IssuedDate": "11 Nov, 2017",
-				"ReturnDate": "18 Nov, 2017"
-			},
-			{
-				"bookTitle": "C",
-				"bookGenere": "G3",
-				"bookThumbnail": "ZZZ",
-				"IssuedDate": "10 Nov, 2017",
-				"ReturnDate": "13 Nov, 2017"
-			}
-		]
+		"ratedBooks": [],
+		"booksLiked": [],
+		"issuedBooks": [],
+		"logs": []
+	},
+	{
+		"username": "abhi",
+		"password": "12345678",
+		"email": "abhishek.sachdeva@mindtre.com",
+		"firstName": "abhishek",
+		"lastName": "sachdeva",
+		"userId": "101",
+		"ratedBooks": [],
+		"booksLiked": [],
+		"issuedBooks": [],
+		"logs": []
 	},
 	{
 		"username": "ajay",
@@ -87,53 +30,9 @@
 		"firstName": "ajay",
 		"lastName": "chawla",
 		"userId": "103",
-		"ratedBooks": [
-			{
-				"BookId": "",
-				"rating": "3.5"
-			}
-		],
-		"booksLiked": [
-			"IdForBook"
-		],
-		"IssuedBooks": [
-			{
-				"bookTitle": "D",
-				"bookGenere": "G1",
-				"bookThumbnail": "XXX",
-				"IssuedDate": "18 Dec, 2017",
-				"ReturnDate": "NA"
-			},
-			{
-				"bookTitle": "B",
-				"bookGenere": "G1",
-				"bookThumbnail": "XXX",
-				"IssuedDate": "19 Dec, 2017",
-				"ReturnDate": "NA"
-			}
-		],
-		"logs": [
-			{
-				"bookTitle": "A",
-				"bookGenere": "G1",
-				"bookThumbnail": "XXX",
-				"IssuedDate": "12 Dec, 2017",
-				"ReturnDate": "14 Dec, 2017"
-			},
-			{
-				"bookTitle": "B",
-				"bookGenere": "G2",
-				"bookThumbnail": "YYY",
-				"IssuedDate": "11 Nov, 2017",
-				"ReturnDate": "18 Nov, 2017"
-			},
-			{
-				"bookTitle": "C",
-				"bookGenere": "G3",
-				"bookThumbnail": "ZZZ",
-				"IssuedDate": "10 Nov, 2017",
-				"ReturnDate": "13 Nov, 2017"
-			}
-		]
+		"ratedBooks": [],
+		"booksLiked": [],
+		"issuedBooks": [],
+		"logs": []
 	}
 ]

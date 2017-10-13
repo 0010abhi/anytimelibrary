@@ -49,7 +49,7 @@
             </td>
             <td>
               <span *ngIf="book.issuedTo.length>0">
-                <span *ngFor="let alloted of book.issuedTo">{{alloted.fromDate}}<br></span>
+                <span *ngFor="let alloted of book.issuedTo">{{alloted.fromDate | date}}<br></span>
               </span>
             </td>
         </tr>

@@ -19,11 +19,21 @@ export class AdminConfigPanelComponent implements OnInit {
     'maxDaysPerIssue': undefined
   };
   ngOnInit() {
-    this.libraryService.getConfiguration().subscribe((data)=>{
+    this.libraryService.getConfiguration().then((data)=>{
       console.log(data);
       this.configData.maxBooksPerUser = data.maxBooksPerUser;
       this.configData.maxDaysPerIssue = data.maxDaysPerIssue;
+    }).catch(err=>{
+      console.log(err);
     });
+  }
+
+  updateConfig(data): void{
+    this.libraryService.updateConfig(data).then(res=>{
+      console.log("config update successfully",res);
+    }).catch(err=>{
+      console.log("error, while updating configuration.");
+    })
   }
 
 }
