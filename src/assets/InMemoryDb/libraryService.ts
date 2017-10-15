@@ -64,15 +64,23 @@ export class LibraryService {
       return Promise.reject("error, while fetching bookInLibrary");
     }
   }
-  updateBooks(): any {
-    return this.http.get('/assets/InMemoryDb/books.json')
-      .map(
-      response => {
-        return response;
-      },
-      err => {
-        return err;
-      });
+  updateBooks(bookId,bookData): any {
+    try {
+      var booksData = JSON.parse(sessionStorage.getItem("booksInLibrary"));
+      var bookFoundIndex = booksData.map(data=>{
+        return data.id;
+      }).indexOf(bookId);
+      booksData[bookFoundIndex].title =  bookData.title;
+      booksData[bookFoundIndex].isbn = bookData.isbn;
+      booksData[bookFoundIndex].author = bookData.author;
+      booksData[bookFoundIndex].genre = bookData.genre;
+      booksData[bookFoundIndex].totalPresent =  bookData.totalPresent;
+      sessionStorage.setItem("booksInLibrary",JSON.stringify(booksData));
+      return Promise.resolve("Book Update Successfully.");
+    } catch (error) {
+      console.log("error, while fetching bookInLibrary");
+      return Promise.reject("error, while fetching bookInLibrary");
+    }
   }
   getMetadataToIssue(): any {
     return this.http.get('/assets/InMemoryDb/metadataToIssue.json')

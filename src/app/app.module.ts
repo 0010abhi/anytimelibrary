@@ -19,6 +19,7 @@ import { AdminTrackBooksPanelComponent } from './admin-track-books-panel/admin-t
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { LibraryService } from '../assets/InMemoryDb/libraryService';
 import { BookLogComponent } from './book-log/book-log.component';
+import { FilterDataPipe } from './pipes/bookDataFilter.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { BookLogComponent } from './book-log/book-log.component';
     AdminInventoryManagementPanelComponent,
     AdminTrackBooksPanelComponent,
     UserPanelComponent,
-    BookLogComponent
+    BookLogComponent,
+    FilterDataPipe
   ],
   imports: [
     BrowserModule,

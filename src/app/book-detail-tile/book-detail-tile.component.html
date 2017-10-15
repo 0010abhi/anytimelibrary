@@ -21,7 +21,7 @@
             </div>
             <div class="col-sm-6">{{bookData.genre}}</div>
             <div class="clearfix"></div>
-            <button type="button" [ngClass]="{'disabled': issuedBook.length>=booksPerUser || issuedBookIdArray.indexOf(bookData.id)>-1,  'btn':true,  'btn-info':true, 'cardIssueBtn': true}" data-toggle="modal" [attr.data-target]="targetModalId">Issue Book</button>
+            <button type="button" [ngClass]="{'disabled': issuedBook.length>=booksPerUser || issuedBookIdArray.indexOf(bookData.id)>-1,  'btn':true,  'btn-info':true, 'cardIssueBtn': true}" data-toggle="modal" [attr.data-target]="issuedBook.length>=booksPerUser || issuedBookIdArray.indexOf(bookData.id)>-1 ? ' ': targetModalId">{{issuedBookIdArray.indexOf(bookData.id)>-1 ? 'Issued' : 'Issue Book'}}</button>
             <!-- <button type="button" [ngClass]="{'disabled': issuedBook.length>=booksPerUser || issuedBookIdArray.indexOf(bookData.id)>-1,  'btn':true,  'btn-info':true, 'cardIssueBtn': true}" (click)="openModal(xyz)">Issue Book</button> -->
         </div>
         <div class="col-sm-4 thumbnail marginBottom5" style="height:150px;">

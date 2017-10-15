@@ -74,7 +74,7 @@
             <button type="button" class="btn btn-info atlBtn" (click)="textFieldMode[i]=!textFieldMode[i];">Update</button>
           </td>
           <td *ngIf="textFieldMode[i]">
-              <button type="button" class="btn btn-info atlBtn" (click)="textFieldMode[i]=!textFieldMode[i];">Apply</button>
+              <button type="button" class="btn btn-info atlBtn" (click)="textFieldMode[i]=!textFieldMode[i];UpdateInfo(book)">Apply</button>
             </td>
       </tr>
     </tbody>

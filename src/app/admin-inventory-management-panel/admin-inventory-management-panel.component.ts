@@ -1,15 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
+import { LibraryService } from '../../assets/InMemoryDb/libraryService';
 
 @Component({
   selector: 'app-admin-inventory-management-panel',
+  providers: [LibraryService],
   templateUrl: './admin-inventory-management-panel.component.html',
   styleUrls: ['./admin-inventory-management-panel.component.scss']
 })
 export class AdminInventoryManagementPanelComponent implements OnInit {
   @Input() bookData;
 
-  constructor() { }
+  constructor(
+    private libraryService:  LibraryService
+  ) { }
 
   books: any;
   filterByGenre: any;
@@ -20,8 +24,19 @@ export class AdminInventoryManagementPanelComponent implements OnInit {
     console.log("Book Data", this.bookData);
   }
 
-  // toggleFieldText(index): void {
-  //   console.log("hello", index);
-  // }
+  UpdateInfo(book): void{
+    var bookData = {
+      "title": book.title,
+      "isbn": book.isbn,
+      "author": book.author,
+      "genre": book.genre,
+      "totalPresent": book.totalPresent
+    }
+    this.libraryService.updateBooks(book.id, bookData).then(data=>{
+      alert("book Updated")
+    }).catch(err=>{
+      alert(err)
+    })
+  }
 
 }
