@@ -10,20 +10,40 @@ import { LibraryService } from '../../assets/InMemoryDb/libraryService';
 export class AdminTrackBooksPanelComponent implements OnInit {
 
   @Input() bookData;
-  
+
   constructor(
     private libraryService: LibraryService
   ) { }
 
   booksIssued: any;
+  booksIssuedToUser: any;
+  currentTrack: string;
 
   ngOnInit() {
-    console.log(this.libraryService.getBooks());
-    this.libraryService.getBooks().then(data=>{
+    this.currentTrack = 'by-book';
+
+    this.libraryService.getBooks().then(data => {
       this.booksIssued = data;
-    }).catch(err=>{
+    }).catch(err => {
       alert(err);
     });
+
+    this.libraryService.getUsers().then(data => {
+      this.booksIssuedToUser = data;
+      this.booksIssuedToUser = this.booksIssuedToUser.filter((datum) => {
+        if (datum.issuedBooks.length > 0) {
+          console.log(datum);
+          return datum;
+        }
+      })
+      console.log("uuuucccc", this.booksIssuedToUser);
+    }).catch(err => {
+      alert(err);
+    });
+  }
+
+  setCurrentTrack(track: string): void {
+    this.currentTrack = track;
   }
 
 }

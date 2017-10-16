@@ -20,7 +20,6 @@ export class AdminConfigPanelComponent implements OnInit {
   };
   ngOnInit() {
     this.libraryService.getConfiguration().then((data)=>{
-      console.log(data);
       this.configData.maxBooksPerUser = data.maxBooksPerUser;
       this.configData.maxDaysPerIssue = data.maxDaysPerIssue;
     }).catch(err=>{

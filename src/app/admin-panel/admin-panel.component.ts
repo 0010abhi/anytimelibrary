@@ -32,7 +32,8 @@ export class AdminPanelComponent implements OnInit {
   }
   ngOnInit() {
     this.getInitData();
-    this.currentPanel = 'config-panel';
+    // this.currentPanel = 'config-panel';
+    this.currentPanel = 'track-books';
   }
 
   setCurrentPanel(panelName: string): void {
