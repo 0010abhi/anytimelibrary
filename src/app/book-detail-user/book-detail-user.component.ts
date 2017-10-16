@@ -4,7 +4,6 @@ import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-book-detail-user',
-  
   templateUrl: './book-detail-user.component.html',
   styleUrls: ['./book-detail-user.component.scss']
 })

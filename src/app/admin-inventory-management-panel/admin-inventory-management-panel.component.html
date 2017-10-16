@@ -1,81 +1,73 @@
 <div class="col-sm-12">
   <div class="col-sm-8"></div>
   <div class="col-sm-4 genreFilterOpt">
-      <label>Genre Filter</label>
-      <select class="form-control">
-        <option [value]="NA">None</option>
-        <option [value]="Fiction">Fiction</option>
-        <option [value]="Horror">Horror</option>
-        <option [value]="Technology">Technology</option>
-      </select>
+    <label>Genre Filter</label>
+    <select class="form-control" [(ngModel)]="filterValue">
+      <option *ngFor="let filterVal of filterValueArray" [ngValue]="filterVal">{{filterVal}}</option>
+    </select>
   </div>
   <div class="clearfix"></div>
-  <table class="table table-bordered inventoryTable" >
+  <table class="table table-bordered inventoryTable">
     <thead>
       <tr>
-          <td>#</td>
-          <td>
-            ISBN
-            <!-- <span class="glyphicon glyphicon-chevron-down pull-right"></span> -->
-          </td>
-          <td>
-            Title
-            <span class="glyphicon glyphicon-chevron-down pull-right"></span>
-          </td>
-          <td>
-            Author
-            <span class="glyphicon glyphicon-chevron-down pull-right"></span>
-          </td>
-          <td>
-            Genre
-            <span class="glyphicon glyphicon-chevron-down pull-right"></span>
-          </td>
-          <td>
-            Total Books
-            <span class="glyphicon glyphicon-chevron-down pull-right"></span>
-          </td>
-          <td>
-            Action
-          </td>
+        <td>#</td>
+        <td>
+          ISBN
+        </td>
+        <td>
+          Title
+        </td>
+        <td>
+          Author
+        </td>
+        <td>
+          Genre
+        </td>
+        <td>
+          Total Books
+        </td>
+        <td>
+          Action
+        </td>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let book of books; let i=index;" ng-init="textFieldMode[i]=false;">
-          <td>{{i+1}}</td>
-          
-          <td *ngIf="!textFieldMode[i]">
-            {{book.isbn}}
-          </td>
-          <td *ngIf="textFieldMode[i]">
-            <input class="form-control" type="text" [(ngModel)]="book.isbn"/>
-          </td>
+      <tr *ngFor="let book of books  | filterData: [filterValue,'']; let i=index;" ng-init="textFieldMode[i]=false;">
+        <td>{{i+1}}</td>
 
-          <td *ngIf="!textFieldMode[i]">{{book.title}}</td>
-          <td *ngIf="textFieldMode[i]">
-              <input class="form-control" type="text" [(ngModel)]="book.title"/>
-          </td>
+        <td *ngIf="!textFieldMode[i]">
+          {{book.isbn}}
+        </td>
+        <td *ngIf="textFieldMode[i]">
+          <input class="form-control" type="text" [(ngModel)]="book.isbn" />
+        </td>
 
-          <td *ngIf="!textFieldMode[i]">{{book.author}}</td>
-          <td *ngIf="textFieldMode[i]">
-              <input class="form-control" type="text" [(ngModel)]="book.author"/>
-          </td>
+        <td *ngIf="!textFieldMode[i]">{{book.title}}</td>
+        <td *ngIf="textFieldMode[i]">
+          <input class="form-control" type="text" [(ngModel)]="book.title" />
+        </td>
 
-          <td *ngIf="!textFieldMode[i]">{{book.genre}}</td>
-          <td *ngIf="textFieldMode[i]">
-              <input class="form-control" type="text" [(ngModel)]="book.genre"/>
-          </td>
+        <td *ngIf="!textFieldMode[i]">{{book.author}}</td>
+        <td *ngIf="textFieldMode[i]">
+          <input class="form-control" type="text" [(ngModel)]="book.author" />
+        </td>
 
-          <td *ngIf="!textFieldMode[i]">{{book.totalPresent}}</td>
-          <td *ngIf="textFieldMode[i]">
-              <input class="form-control" type="text" [(ngModel)]="book.totalPresent"/>
-          </td>
+        <td *ngIf="!textFieldMode[i]">{{book.genre}}</td>
+        <td *ngIf="textFieldMode[i]">
+          <input class="form-control" type="text" [(ngModel)]="book.genre" />
+        </td>
 
-          <td *ngIf="!textFieldMode[i]">
-            <button type="button" class="btn btn-info atlBtn" (click)="textFieldMode[i]=!textFieldMode[i];">Update</button>
-          </td>
-          <td *ngIf="textFieldMode[i]">
-              <button type="button" class="btn btn-info atlBtn" (click)="textFieldMode[i]=!textFieldMode[i];UpdateInfo(book)">Apply</button>
-            </td>
+        <td *ngIf="!textFieldMode[i]">{{book.totalPresent}}</td>
+        <td *ngIf="textFieldMode[i]">
+          <input class="form-control" type="text" [(ngModel)]="book.totalPresent" />
+        </td>
+
+        <td *ngIf="!textFieldMode[i]">
+          <button type="button" class="btn btn-info atlBtn" (click)="textFieldMode[i]=!textFieldMode[i];">Update</button>
+        </td>
+        <td *ngIf="textFieldMode[i]">
+          <button type="button" class="btn btn-info atlBtn" (click)="textFieldMode[i]=!textFieldMode[i];UpdateInfo(book)">Apply</button>
+        </td>
       </tr>
     </tbody>
   </table>

@@ -1,32 +1,56 @@
-import { TestBed, async } from '@angular/core/testing';
-
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { LibraryService } from '../assets/InMemoryDb/libraryService';
 
 describe('AppComponent', () => {
+  let comp: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let de: DebugElement;
+  let el: HTMLElement;
+  let libraryService, libraryServiceStub;
   beforeEach(async(() => {
+
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
-    }).compileComponents();
+      imports: [
+        HttpClientModule
+      ],
+      providers: [LibraryService],
+      schemas: [ NO_ERRORS_SCHEMA ]
+    })
+    .compileComponents()
+    .then(() => {
+      fixture = TestBed.createComponent(AppComponent); //returns a ComponentFixture
+      //The fixture provides access to the component instance itself 
+      //and to the DebugElement, which is a handle on the component's DOM element.
+      comp = fixture.componentInstance; // BannerComponent test instance
+      de = fixture.debugElement; // throught this we can handle dom element.
+      el = de.nativeElement;
+      libraryService = TestBed.get(LibraryService);
+    });
   }));
 
-  it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
-
-  it(`should have as title 'app'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app');
-  }));
-
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it('should not call service methods before OnInit', () => {
+      expect(libraryService).toBeDefined();
+  });
+  
+  it('should call service methods after initialized', () => {
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
-  }));
+    try{
+      libraryService.setConfiguration();
+      libraryService.setBooks();
+      libraryService.setUsers();
+    } catch(err){
+      expect(err).toBe(true);
+    }
+  });
 });
+
+
+
+

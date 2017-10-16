@@ -21,32 +21,12 @@ export class UserProfileComponent implements OnInit {
   inventory: any;
   localUser: any;
   getInitData(): void {
-    // this.libraryService.getUsers().subscribe((data) => {
-    //   this.users = data;
-    // });
     this.libraryService.getBooks().then((data) => {
       this.books = data;
     });
-    // this.libraryService.getInventory().subscribe((data) => {
-    //   this.inventory = data;
-    // });
   }
-  
+
   ngOnInit(): void {
     this.getInitData();
   }
-
-  // deleteData(): void {
-  //   this.results = this.results.splice(0, 2);
-  //   console.log(this.results);
-  // }
-
-  addData(): void {
-    this.users = this.libraryService.modifyBooksData('abhi', {"firstName": "Zora", "lastName": "Randhawa"}, this.users);
-    console.log(this.users);
-    // this.libraryService.modifyBooksData('abhi', {"firstName": "Zora", "lastName": "Randhawa"}, this.users)
-    //     .then((res)=> {console.log(res)})
-    //     .catch((err)=>{console.log(err)});
-  }
-
 }

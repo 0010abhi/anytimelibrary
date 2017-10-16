@@ -1,12 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-// Import HttpClientModule from @angular/common/http
 import {HttpClientModule} from '@angular/common/http';
 // import { ngMaterial } from "../../node_modules/angular-material/angular-material.min"
-import { AppRoutingModule } from './app.routing.module'
-
-
+import { AppRoutingModule } from './app.routing.module';
 import { AppComponent } from './app.component';
 import { BookDetailTileComponent } from './book-detail-tile/book-detail-tile.component';
 import { BookDetailUserComponent } from './book-detail-user/book-detail-user.component';

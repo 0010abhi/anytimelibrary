@@ -12,31 +12,32 @@ export class AdminInventoryManagementPanelComponent implements OnInit {
   @Input() bookData;
 
   constructor(
-    private libraryService:  LibraryService
+    private libraryService: LibraryService
   ) { }
 
   books: any;
-  filterByGenre: any;
+  filterValueArray = ['NA', 'Fiction', 'Horror', 'Technology'];
+  filterValue: any;
   textFieldMode = [];
+  
   ngOnInit() {
-    this.filterByGenre = "NA";
+    this.filterValue = 'NA';
     this.books = this.bookData;
-    console.log("Book Data", this.bookData);
   }
 
-  UpdateInfo(book): void{
+  UpdateInfo(book): void {
     var bookData = {
       "title": book.title,
       "isbn": book.isbn,
       "author": book.author,
       "genre": book.genre,
       "totalPresent": book.totalPresent
-    }
-    this.libraryService.updateBooks(book.id, bookData).then(data=>{
+    };
+    this.libraryService.updateBooks(book.id, bookData).then(data => {
       alert("book Updated")
-    }).catch(err=>{
+    }).catch(err => {
       alert(err)
-    })
+    });
   }
 
 }

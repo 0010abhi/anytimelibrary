@@ -8,16 +8,17 @@ import { LibraryService } from '../assets/InMemoryDb/libraryService';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-
-  titleG = true;
-  
   constructor(
     private libraryService: LibraryService
-  ){}
+  ){ }
 
-  ngOnInit(){
-    this.libraryService.setConfiguration();
-    this.libraryService.setBooks();
-    this.libraryService.setUsers();
+  ngOnInit() {
+    try {
+      this.libraryService.setConfiguration();
+      this.libraryService.setBooks();
+      this.libraryService.setUsers();
+    } catch(err) {
+      alert(err);
+    }
   }
  }
