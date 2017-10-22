@@ -11,6 +11,7 @@ describe('AppComponent', () => {
   let de: DebugElement;
   let el: HTMLElement;
   let libraryService, libraryServiceStub;
+  let alertSpy;
   beforeEach(async(() => {
 
     TestBed.configureTestingModule({
@@ -33,6 +34,7 @@ describe('AppComponent', () => {
       el = de.nativeElement;
       libraryService = TestBed.get(LibraryService);
     });
+    
   }));
 
   it('should not call service methods before OnInit', () => {
@@ -46,7 +48,8 @@ describe('AppComponent', () => {
       libraryService.setBooks();
       libraryService.setUsers();
     } catch(err){
-      expect(err).toBe(true);
+      alertSpy = spyOn(window, 'alert');
+      expect(alertSpy).toHaveBeenCalledWith('a message');
     }
   });
 });

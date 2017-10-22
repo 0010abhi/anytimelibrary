@@ -1,25 +1,49 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { UserProfileComponent } from './user-profile.component';
+import { LibraryService } from '../../assets/InMemoryDb/libraryService';
 
 describe('UserProfileComponent', () => {
-  let component: UserProfileComponent;
+  let comp: UserProfileComponent;
   let fixture: ComponentFixture<UserProfileComponent>;
-
+  let de: DebugElement;
+  let el: HTMLElement;
+  let libraryService, libraryServiceStub;
+  let getInitSpy;
   beforeEach(async(() => {
+
     TestBed.configureTestingModule({
-      declarations: [ UserProfileComponent ]
+      declarations: [
+        UserProfileComponent
+      ],
+      imports: [
+        HttpClientModule
+      ],
+      providers: [LibraryService],
+      schemas: [NO_ERRORS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents()
+      .then(() => {
+        fixture = TestBed.createComponent(UserProfileComponent); //returns a ComponentFixture
+        //The fixture provides access to the component instance itself 
+        //and to the DebugElement, which is a handle on the component's DOM element.
+        comp = fixture.componentInstance; // BannerComponent test instance
+        de = fixture.debugElement; // throught this we can handle dom element.
+        el = de.nativeElement;
+        libraryService = TestBed.get(LibraryService);
+      });
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(UserProfileComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  it('should not call service methods before OnInit', () => {
+    expect(libraryService).toBeDefined();
   });
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
+  it('should call service methods after initialized', () => {
+    getInitSpy = spyOn(comp, 'getInitData');
+    fixture.detectChanges();
+    expect(getInitSpy).toHaveBeenCalled();
   });
+
 });

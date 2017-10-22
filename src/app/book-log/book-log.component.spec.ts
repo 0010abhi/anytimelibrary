@@ -1,25 +1,65 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ComponentFixture, TestBed, async, fakeAsync, tick } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
+import { Router } from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
 import { BookLogComponent } from './book-log.component';
+import { LibraryService } from '../../assets/InMemoryDb/libraryService';
 
 describe('BookLogComponent', () => {
-  let component: BookLogComponent;
+  let comp: BookLogComponent;
   let fixture: ComponentFixture<BookLogComponent>;
-
+  let de: DebugElement;
+  let el: HTMLElement;
+  let libraryService, libraryServiceStub;
+  let currPanelSpy, ratingToBookSpy;
   beforeEach(async(() => {
+
     TestBed.configureTestingModule({
-      declarations: [ BookLogComponent ]
+      declarations: [
+        BookLogComponent
+      ],
+      imports: [
+        HttpClientModule
+      ],
+      providers: [LibraryService],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
-    .compileComponents();
+    .compileComponents()
+    .then(() => {
+      fixture = TestBed.createComponent(BookLogComponent); //returns a ComponentFixture
+      //The fixture provides access to the component instance itself 
+      //and to the DebugElement, which is a handle on the component's DOM element.
+      comp = fixture.componentInstance; // BannerComponent test instance
+      de = fixture.debugElement; // throught this we can handle dom element.
+      el = de.nativeElement;
+      libraryService = TestBed.get(LibraryService);
+    });
+    
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(BookLogComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  it('should not call service methods before OnInit', () => {
+      expect(libraryService).toBeDefined();
   });
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
-  });
+  // action for set current panel.
+  // it('should open pop up when click on return book', fakeAsync(() => {
+  //   // fixture.detectChanges();
+  //   currPanelSpy = spyOn(comp, 'returnBook');
+  //   const button = de.query(By.css('.retBtn'));
+  //   console.log(button);
+  //   el = button.nativeElement;
+  //   el.click();
+  //   expect(currPanelSpy).toHaveBeenCalled();
+  // }));
+
+  // it('should set rating when click on glyphi', fakeAsync(() => {
+    
+  //   const span = de.query(By.css('span')); 
+  //   el = span.nativeElement;
+  //   el.click();
+  //   ratingToBookSpy = spyOn(comp, 'ratingToBook');
+  //   expect(ratingToBookSpy).toHaveBeenCalled();
+  // }));
+
 });

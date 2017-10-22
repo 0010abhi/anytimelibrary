@@ -20,6 +20,7 @@ export class UserProfileComponent implements OnInit {
   books: any;
   inventory: any;
   localUser: any;
+  
   getInitData(): void {
     this.libraryService.getBooks().then((data) => {
       this.books = data;

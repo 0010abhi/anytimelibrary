@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LibraryService } from '../../assets/InMemoryDb/libraryService';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+// import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-panel',
@@ -11,9 +12,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class UserPanelComponent implements OnInit {
 
   constructor(
-    private libraryService: LibraryService,
-    private router: Router,
-    private route: ActivatedRoute
+    private libraryService: LibraryService
+    // private router: Router
+    // private route: ActivatedRoute
   ) { }
   
   issuedBook: any;
@@ -25,11 +26,6 @@ export class UserPanelComponent implements OnInit {
     "configuration": undefined,
     "issueMetadata": undefined
   }
-
-  // "ratedBooks": [],
-  // "booksLiked": [],
-  // "issuedBooks": [],
-  // "logs": []
 
   getInitData(): void {
     //BookLocation data is used @ time of issue. and then will be saved with issued book object.
@@ -62,6 +58,6 @@ export class UserPanelComponent implements OnInit {
   }
   
   logOut(): void {
-    this.router.navigate(['/login']);
+    // this.router.navigate(['/login']);
   }
 }

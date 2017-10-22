@@ -14,18 +14,10 @@ export class BookDetailUserComponent implements OnInit {
 
   filterValueArray = ["NA", "Fiction","Horror","Technology"];
   filterValue: any;
-  constructor(
-    
-  ) { }
+  constructor() { }
   
   ngOnInit() {
     this.filterValue = "NA";
   }
-
-  // ngDoCheck(){
-  //   if(this.filterValue){
-  //     console.log("filter chaging", this.filterValue);
-  //   }
-  // }
 
 }
