@@ -29,6 +29,7 @@ export class AdminTrackBooksPanelComponent implements OnInit {
     });
 
     this.libraryService.getUsers().then(data => {
+      console.log(data);
       this.booksIssuedToUser = data;
       this.booksIssuedToUser = this.booksIssuedToUser.filter((datum) => {
         if (datum.issuedBooks.length > 0) {

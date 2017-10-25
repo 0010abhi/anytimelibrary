@@ -1,4 +1,5 @@
-<div class="col-sm-12">
+<div class="row">
+  <div class="col-sm-12">
   <h3 class="text-center" *ngIf="issuedBook.length<1">No Books to return.</h3>
   <h3 class="text-center" *ngIf="issuedBook.length>0">Current books issued to you</h3>
   <table *ngIf="issuedBook.length>0" class="table table-bordered">
@@ -35,10 +36,11 @@
       </tr>
     </tbody>
   </table>
+  </div>
 </div>
 
 <!-- returnBook Modal -->
-<div class="col-sm-12" *ngIf="issuedBook.length>0">
+<div class="row" *ngIf="issuedBook.length>0">
   <div [attr.id]="'returnModal'+ i" *ngFor="let book of issuedBook; let i=index;" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -68,7 +70,8 @@
 </div>
 
 <hr>
-<div class="col-sm-12">
+<div class="row">
+  <div class="col-sm-12">
   <h3 class="text-center" *ngIf="logs.length<1">No Books transacted yet</h3>
   <h3 class="text-center" *ngIf="logs.length>0">Books issued to you so far.</h3>
   <table *ngIf="logs.length>0" class="table table-bordered">
@@ -106,4 +109,5 @@
       </tr>
     </tbody>
   </table>
+  </div>
 </div>

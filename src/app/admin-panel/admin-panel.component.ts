@@ -26,9 +26,6 @@ export class AdminPanelComponent implements OnInit {
       this.booksData = data;
       console.log(this.booksData);
     });
-    // this.libraryService.getInventory().subscribe((data) => {
-    //   this.inventory = data;
-    // });
   }
   ngOnInit() {
     this.getInitData();
@@ -40,6 +37,7 @@ export class AdminPanelComponent implements OnInit {
     this.currentPanel = panelName;
   }
   logOut(): void {
+    sessionStorage.setItem('isLoogedIn','0');
     this.router.navigate(['/login']);
   }
 }

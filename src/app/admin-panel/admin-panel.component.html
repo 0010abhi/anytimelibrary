@@ -1,4 +1,4 @@
-<div class="col-sm-12 libPanel">
+<div class="row libPanel">
     <nav class="navbar navDark">
         <div class="col-sm-8">
             <span class="adSpan">Hello, Admin</span>
@@ -10,7 +10,7 @@
             </span>
         </div>
     </nav>
-    <div class="col-sm-12 btnPanel">
+    <div class="row btnPanel">
         <div class="col-sm-4">
             <button [ngClass]="{'libBtn':true, 'libBtnActive':currentPanel==='config-panel'}" (click)="setCurrentPanel('config-panel');">Configure Settings</button>
         </div>
@@ -21,7 +21,7 @@
             <button [ngClass]="{'libBtn':true, 'libBtnActive':currentPanel==='track-books'}" (click)="setCurrentPanel('track-books');">Track Books</button>
         </div>
     </div>
-    <div class="col-sm-12" [ngSwitch]="currentPanel">
+    <div [ngSwitch]="currentPanel">
         <app-admin-config-panel *ngSwitchCase="'config-panel'"></app-admin-config-panel>
         <app-admin-inventory-management-panel *ngSwitchCase="'inventory-manage'" [bookData]="booksData"></app-admin-inventory-management-panel>
         <app-admin-track-books-panel *ngSwitchCase="'track-books'" [bookData]="booksData"></app-admin-track-books-panel>

@@ -2,9 +2,16 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class AuthService {
-    isLoggedIn = false;
+    
+    isLoggedIn: boolean;
     redirectUrl: string;
-  constructor() { }
+  constructor() {
+    if(sessionStorage.getItem("isLoogedIn")==='1'){
+       this.isLoggedIn = true;
+    } else{
+        this.isLoggedIn = false; 
+    }
+   }
 
   // TODO: replace login with onservable and google+ authenticationServices
   // authenticationServices

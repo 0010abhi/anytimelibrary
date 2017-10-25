@@ -69,6 +69,7 @@ export class UserPanelComponent implements OnInit {
   }
   
   logOut(): void {
+    sessionStorage.setItem('isLoogedIn','0');
     this.router.navigate(['/login']);
   }
 }

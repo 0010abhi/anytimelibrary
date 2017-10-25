@@ -25,9 +25,11 @@ export class LogInComponent implements OnInit {
     this.authService.logIn1(user, pass).then(res => {
       console.log(res);
       if (res.access === 'AdminAccess') {
+        sessionStorage.setItem("isLoogedIn",'1');
         this.router.navigate(['/admin']);
       } else if (res.access === "UserAccess") {
         this.libraryService.setCurrentUser(res.data);
+        sessionStorage.setItem("isLoogedIn",'1');
         this.router.navigate(['/user']);
       } 
       // else {
