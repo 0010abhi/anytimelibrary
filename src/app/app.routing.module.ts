@@ -8,12 +8,15 @@ import { AppComponent } from './app.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
+import { app404Component } from './404-not-found/404.component';
+import { AuthGuard } from '../assets/InMemoryDb/auth-guard.service';
 
 const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login',  component: LogInComponent },
-    { path: 'user',  component: UserPanelComponent },
-    { path: 'admin', component: AdminPanelComponent }
+    { path: 'user', canActivate:[AuthGuard], component: UserPanelComponent, data: {id:null} },
+    { path: 'admin', canActivate:[AuthGuard], component: AdminPanelComponent },
+    { path: '**', component: app404Component}
   ];
    
 @NgModule({

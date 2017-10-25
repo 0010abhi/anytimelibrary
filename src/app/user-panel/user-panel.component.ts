@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { LibraryService } from '../../assets/InMemoryDb/libraryService';
-import { Router } from '@angular/router';
-// import { Router, ActivatedRoute } from '@angular/router';
+// import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+
+// import { ActivatedRoute, ParamMap } from '@angular/router';
+// import 'rxjs/add/operator/switchMap';
+// import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-user-panel',
@@ -10,12 +14,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-panel.component.scss']
 })
 export class UserPanelComponent implements OnInit {
-
+  // heroes$: Observable<Hero[]>;
   constructor(
-    private libraryService: LibraryService
-    // private router: Router
-    // private route: ActivatedRoute
+    private libraryService: LibraryService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
+
+  // this.heroes$ = this.route.paramMap
+  // .switchMap((params: ParamMap) => {
+  //   // (+) before `params.get()` turns the string into a number
+  //   this.selectedId = +params.get('id');
+  //   return this.service.getHeroes();
+  // });
   
   issuedBook: any;
   logs: any;
@@ -58,6 +69,6 @@ export class UserPanelComponent implements OnInit {
   }
   
   logOut(): void {
-    // this.router.navigate(['/login']);
+    this.router.navigate(['/login']);
   }
 }

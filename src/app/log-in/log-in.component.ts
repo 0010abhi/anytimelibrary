@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { LibraryService } from '../../assets/InMemoryDb/libraryService';
+import { AuthService } from '../../assets/InMemoryDb/auth.service';
 
 @Component({
   selector: 'app-log-in',
@@ -13,6 +14,7 @@ export class LogInComponent implements OnInit {
   constructor(
     private router: Router,
     private libraryService: LibraryService,
+    private authService: AuthService,
     private route: ActivatedRoute
   ) { }
 
@@ -20,16 +22,17 @@ export class LogInComponent implements OnInit {
   }
 
   logIn(user, pass): void {
-    this.libraryService.logIn1(user, pass).then(res => {
+    this.authService.logIn1(user, pass).then(res => {
       console.log(res);
       if (res.access === 'AdminAccess') {
         this.router.navigate(['/admin']);
       } else if (res.access === "UserAccess") {
         this.libraryService.setCurrentUser(res.data);
         this.router.navigate(['/user']);
-      } else {
-        alert("else res");
-      }
+      } 
+      // else {
+      //   alert("");
+      // }
     }).catch(err => {
       alert(err);
     })

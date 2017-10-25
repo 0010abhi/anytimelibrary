@@ -11,12 +11,25 @@ import { LogInComponent } from './log-in/log-in.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminConfigPanelComponent } from './admin-config-panel/admin-config-panel.component';
+import { app404Component } from './404-not-found/404.component';
 import { AdminInventoryManagementPanelComponent } from './admin-inventory-management-panel/admin-inventory-management-panel.component';
 import { AdminTrackBooksPanelComponent } from './admin-track-books-panel/admin-track-books-panel.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { LibraryService } from '../assets/InMemoryDb/libraryService';
+import { AuthService } from '../assets/InMemoryDb/auth.service';
 import { BookLogComponent } from './book-log/book-log.component';
 import { FilterDataPipe } from './pipes/bookDataFilter.pipe';
+
+import { AuthGuard } from '../assets/InMemoryDb/auth-guard.service';
+
+
+//TODO: 1) 
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// @NgModule({
+//   imports: [
+//     BrowserAnimationsModule
+
 
 @NgModule({
   declarations: [
@@ -31,6 +44,7 @@ import { FilterDataPipe } from './pipes/bookDataFilter.pipe';
     AdminTrackBooksPanelComponent,
     UserPanelComponent,
     BookLogComponent,
+    app404Component,
     FilterDataPipe
   ],
   imports: [
@@ -39,7 +53,7 @@ import { FilterDataPipe } from './pipes/bookDataFilter.pipe';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [LibraryService],
+  providers: [LibraryService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
