@@ -1,12 +1,13 @@
-<div class="row">
-  <div class="col-sm-8"></div>
-  <div class="col-sm-4 genreFilterOpt">
-    <label>Genre Filter</label>
-    <select class="form-control" [(ngModel)]="filterValue">
-      <option *ngFor="let filterVal of filterValueArray" [ngValue]="filterVal">{{filterVal}}</option>
-    </select>
-  </div>
-  <div class="clearfix"></div>
+<div class="row overflow-y-scroll">
+  <div class="col-sm-12">
+      <div class="col-sm-4 col-sm-offset-8 genreFilterOpt">
+        <label>Genre Filter</label>
+        <select class="form-control" [(ngModel)]="filterValue">
+          <option *ngFor="let filterVal of filterValueArray" [ngValue]="filterVal">{{filterVal}}</option>
+        </select>
+      </div>
+  </div>  
+  
   <table class="table table-bordered inventoryTable">
     <thead>
       <tr>
