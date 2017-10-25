@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-sm-12">
+  <!-- <div class="col-sm-12 overflow-y-scroll"> -->
   <h3 class="text-center" *ngIf="issuedBook.length<1">No Books to return.</h3>
   <h3 class="text-center" *ngIf="issuedBook.length>0">Current books issued to you</h3>
   <table *ngIf="issuedBook.length>0" class="table table-bordered">
@@ -36,7 +36,7 @@
       </tr>
     </tbody>
   </table>
-  </div>
+  <!-- </div> -->
 </div>
 
 <!-- returnBook Modal -->
@@ -71,7 +71,7 @@
 
 <hr>
 <div class="row">
-  <div class="col-sm-12">
+  <!-- <div class="col-sm-12"> -->
   <h3 class="text-center" *ngIf="logs.length<1">No Books transacted yet</h3>
   <h3 class="text-center" *ngIf="logs.length>0">Books issued to you so far.</h3>
   <table *ngIf="logs.length>0" class="table table-bordered">
@@ -109,5 +109,5 @@
       </tr>
     </tbody>
   </table>
-  </div>
+  <!-- </div> -->
 </div>

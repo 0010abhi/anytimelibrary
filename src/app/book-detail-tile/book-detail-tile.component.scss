@@ -1,22 +1,29 @@
-.bookCard{
-    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
-    padding: 0px;
-    margin:5px;
-    .bookCardData{
-        padding-right: 10px;
-        padding-top: 10px;
-        .cardIssueBtn{
-            margin-top: 5px;
-            width: 100%;
-            border-radius: 0px;
+// .cardP{
+//     padding: 5px;
+    .bookCard{
+        box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+        padding: 0px;
+        margin:5px;
+        .bookCardData{
+            padding-right: 20px;
+            padding-top: 10px;
+            .cardIssueBtn{
+                margin-top: 5px;
+                width: 100%;
+                border-radius: 0px;
+            }
+        }
+        .bookCardDataDesc{
+            padding: 0px 15px;
+            .desc{
+                background-color: #2f6a9e;
+                color: white;
+                border: 1px solid white;
+            }
         }
     }
-    .bookCardDataDesc{
-        background-color: #2f6a9e;
-        color: white;
-        border: 1px solid white;
-    }
-}
+// }
+
 .padding0{
     padding:0px;
 }
