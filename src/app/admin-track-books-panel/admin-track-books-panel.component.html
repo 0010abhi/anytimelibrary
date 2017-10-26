@@ -78,8 +78,8 @@
       </thead>
       <tbody *ngFor="let book of booksIssuedToUser; let i=index;">
         <tr *ngFor="let buk of book.issuedBooks; let j=index;">
-          <td [attr.rowspan]="2">{{i+1}}</td>
-          <td [attr.rowspan]="2">{{book.email}}</td>
+          <td>{{i+1}}</td>
+          <td>{{book.email}}</td>
           <td>{{buk.title}}</td>
           <td>{{buk.fromDate | date}}</td>
           <td>{{buk.dueDate | date}}</td>

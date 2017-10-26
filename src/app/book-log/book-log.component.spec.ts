@@ -54,8 +54,7 @@ describe('BookLogComponent', () => {
   // }));
 
   // it('should set rating when click on glyphi', fakeAsync(() => {
-    
-  //   const span = de.query(By.css('span')); 
+  //   const span = de.query(By.css('.glyphicon')); 
   //   el = span.nativeElement;
   //   el.click();
   //   ratingToBookSpy = spyOn(comp, 'ratingToBook');
